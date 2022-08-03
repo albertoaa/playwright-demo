@@ -63,7 +63,13 @@ test.describe('My first test suite', () => {
   })
 })
 
-test.only('Screenshots', async ({ page }) => {
+test('Screenshots', async ({ page }) => {
   await page.goto('https://example.com')
   await page.screenshot({ path: 'example.png' })
+})
+
+test.only('Single element screenshot', async ({ page }) => {
+  await page.goto('https://example.com')
+  const element = await page.$('h1')
+  await element.screenshot({ path: 'example-single-element.png' })
 })
